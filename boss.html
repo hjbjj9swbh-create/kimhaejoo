@@ -68,6 +68,7 @@
             margin-top: 30px; /* 간격 줄임 */
             font-size: 18px;
             line-height: 1.5;
+            margin-bottom: 15px; /* 간격 조정을 위해 마진 추가 */
         }
         
         /* TEL 번호 스타일 */
@@ -86,74 +87,57 @@
             cursor: pointer;
         }
 
-        /* 'Gallery view' 텍스트 스타일 */
-        .gallery-view-text {
-            color: #6b7280;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-top: 40px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-        
-        /* 갤러리/뷰 구분선 및 배경 */
-        .gallery-view-separator {
-            width: 80%;
-            height: 35px;
-            background-color: #f3f4f6;
-            border-radius: 8px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
         /* 인스타그램 아이콘 스타일 (원본과 동일한 그라데이션) */
         .icon-insta {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
+            width: 60px; /* 크기 조정 */
+            height: 60px; /* 크기 조정 */
+            border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s;
         }
         .icon-insta i {
             color: white;
-            font-size: 36px;
+            font-size: 30px;
         }
         
         /* 블로그 아이콘 스타일 (원본과 동일한 녹색 및 'blog' 텍스트) */
         .icon-blog {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
+            width: 60px; /* 크기 조정 */
+            height: 60px; /* 크기 조정 */
+            border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #4CAF50;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
             color: white;
             font-weight: 900;
-            font-size: 20px;
+            font-size: 18px;
             padding-bottom: 2px;
+            transition: transform 0.1s;
         }
         
-        /* 'communication' 텍스트 스타일 */
+        /* 헤더 텍스트 스타일 (Gallery view, communication 공통) */
         .comm-header {
             color: #6b7280;
             font-size: 14px;
             font-weight: 600;
             letter-spacing: 0.5px;
-            margin-top: 15px; /* 가로바가 추가되어 간격을 줄임 */
-            margin-bottom: 15px;
+            margin-top: 50px; /* 기본 상단 마진 */
+            margin-bottom: 10px; /* 아이콘 위쪽 간격 조정을 위해 줄임 */
             position: relative;
         }
+        
+        /* Gallery view 헤더의 상단 마진을 줄여 간격 최소화 */
+        .gallery-header {
+            margin-top: 15px; 
+        }
 
-        /* 하단 통신 아이콘 컨테이너 */
+        /* 하단 통신 아이콘 컨테이너 (Gallery view에도 재사용) */
         .comm-icons-container {
             width: 90%;
             max-width: 320px;
@@ -163,6 +147,21 @@
             margin: 0 auto;
             display: flex;
             justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 0 10px;
+        }
+
+        /* Gallery view 아이콘 그룹 컨테이너 (크기 조정) */
+        .gallery-icons-container {
+            width: 90%;
+            max-width: 240px; /* 두 아이콘에 맞춰 크기 조정 */
+            height: 90px;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-evenly;
             align-items: center;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             padding: 0 10px;
@@ -231,7 +230,7 @@
             width: 85%;
             height: 1px;
             background-color: #d1d5db;
-            margin: 0 auto 15px; /* 주소 섹션 바와 동일한 스타일 */
+            margin: 0 auto 15px;
         }
         
         /* 주소 텍스트 스타일 */
@@ -279,14 +278,16 @@
             </p>
         </div>
 
-        <!-- Gallery / view 텍스트 및 배경 박스 -->
-        <div class="gallery-view-separator">
-            <span class="gallery-view-text" style="padding-right: 15px;">Gallery</span>
-            <span class="gallery-view-text" style="padding-left: 15px;">view</span>
+        <!-- 요청하신 가로바 추가 (Kakao와 Gallery view 사이) -->
+        <div class="horizontal-bar" style="margin-top: 5px; margin-bottom: 10px;"></div>
+
+        <!-- Gallery view 헤더 -->
+        <div class="comm-header gallery-header" style="margin-top: 0;">
+            Gallery view
         </div>
         
-        <!-- 소셜 아이콘 영역 -->
-        <div class="flex justify-center space-x-12 mt-6 mb-6"> <!-- mb-6 추가 -->
+        <!-- 소셜 아이콘 컨테이너 (배경 추가 및 아이콘 크기 조정) -->
+        <div class="gallery-icons-container">
             <!-- Instagram 아이콘 (바로가기) -->
             <a href="https://instagram.com/boss_tattoo" target="_blank" class="icon-insta">
                 <i class="fab fa-instagram"></i>
@@ -298,10 +299,10 @@
             </a>
         </div>
 
-        <!-- 요청하신 가로바 추가 (아이콘과 communication 사이) -->
-        <div class="horizontal-bar" style="margin-top: 0; margin-bottom: 15px;"></div>
+        <!-- 가로바 추가 (소셜 아이콘과 communication 사이) -->
+        <div class="horizontal-bar" style="margin-top: 20px; margin-bottom: 15px;"></div>
 
-        <!-- Communication 헤더 (margin-top을 줄여 간격 감소) -->
+        <!-- Communication 헤더 -->
         <div class="comm-header" style="margin-top: 0;">
             communication
         </div>
