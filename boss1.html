@@ -65,7 +65,7 @@
 
         /* 연락처 블록 스타일 */
         .contact-block {
-            margin-top: 50px;
+            margin-top: 30px; /* 간격 줄임 */
             font-size: 18px;
             line-height: 1.5;
         }
@@ -148,7 +148,7 @@
             font-size: 14px;
             font-weight: 600;
             letter-spacing: 0.5px;
-            margin-top: 50px;
+            margin-top: 15px; /* 가로바가 추가되어 간격을 줄임 */
             margin-bottom: 15px;
             position: relative;
         }
@@ -231,7 +231,7 @@
             width: 85%;
             height: 1px;
             background-color: #d1d5db;
-            margin: 0 auto 15px;
+            margin: 0 auto 15px; /* 주소 섹션 바와 동일한 스타일 */
         }
         
         /* 주소 텍스트 스타일 */
@@ -286,7 +286,7 @@
         </div>
         
         <!-- 소셜 아이콘 영역 -->
-        <div class="flex justify-center space-x-12 mt-6">
+        <div class="flex justify-center space-x-12 mt-6 mb-6"> <!-- mb-6 추가 -->
             <!-- Instagram 아이콘 (바로가기) -->
             <a href="https://instagram.com/boss_tattoo" target="_blank" class="icon-insta">
                 <i class="fab fa-instagram"></i>
@@ -298,8 +298,11 @@
             </a>
         </div>
 
-        <!-- Communication 헤더 -->
-        <div class="comm-header">
+        <!-- 요청하신 가로바 추가 (아이콘과 communication 사이) -->
+        <div class="horizontal-bar" style="margin-top: 0; margin-bottom: 15px;"></div>
+
+        <!-- Communication 헤더 (margin-top을 줄여 간격 감소) -->
+        <div class="comm-header" style="margin-top: 0;">
             communication
         </div>
         
@@ -327,7 +330,7 @@
 
         <!-- 주소 및 찾아오는 길 섹션 추가 -->
         <div class="address-section">
-            <!-- 요청하신 가로바 -->
+            <!-- 기존 주소 섹션 가로바 -->
             <div class="horizontal-bar"></div>
             
             <!-- 주소 텍스트 -->
