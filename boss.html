@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보스타투 디지털 명함</title>
+    <!-- Tailwind CSS CDN 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome (아이콘 사용) 로드 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* 기본 폰트 설정 및 전체 화면 중앙 정렬 */
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px; /* 작은 화면 대비 패딩 추가 */
+        }
+
+        /* 폰 모양의 외부 프레임 스타일 */
+        .phone-frame {
+            width: 380px;
+            max-width: 95vw; /* 반응형 대응 */
+            height: 780px;
+            background-color: #000;
+            border-radius: 45px;
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            box-sizing: content-box;
+        }
+        
+        /* 화면 내용 영역 */
+        .screen-content {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            border-radius: 35px;
+            padding: 50px 0 20px 0;
+            box-sizing: border-box;
+            text-align: center;
+            overflow-y: auto; /* 내용이 길어질 경우 스크롤 가능하도록 */
+        }
+        
+        /* '보스타투' 제목 스타일 (원본 이미지의 폰트 크기 및 굵기 유지) */
+        .title-boss-tattoo {
+            font-size: 40px;
+            font-weight: 800; /* Extra Bold */
+            color: #000;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        /* 파란색 강조 텍스트 스타일 (원본 이미지 색상 유지) */
+        .blue-highlight {
+            color: #0000FF;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        /* 연락처 블록 스타일 */
+        .contact-block {
+            margin-top: 30px; /* 간격 줄임 */
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        
+        /* TEL 번호 스타일 */
+        .tel-text {
+            color: #000;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        /* Kakao 링크 스타일 */
+        .kakao-link {
+            font-size: 18px;
+            color: #0000FF;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 'Gallery view' 텍스트 스타일 */
+        .gallery-view-text {
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        /* 갤러리/뷰 구분선 및 배경 */
+        .gallery-view-separator {
+            width: 80%;
+            height: 35px;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* 인스타그램 아이콘 스타일 (원본과 동일한 그라데이션) */
+        .icon-insta {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .icon-insta i {
+            color: white;
+            font-size: 36px;
+        }
+        
+        /* 블로그 아이콘 스타일 (원본과 동일한 녹색 및 'blog' 텍스트) */
+        .icon-blog {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4CAF50;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: white;
+            font-weight: 900;
+            font-size: 20px;
+            padding-bottom: 2px;
+        }
+        
+        /* 'communication' 텍스트 스타일 */
+        .comm-header {
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 15px; /* 가로바가 추가되어 간격을 줄임 */
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        /* 하단 통신 아이콘 컨테이너 */
+        .comm-icons-container {
+            width: 90%;
+            max-width: 320px;
+            height: 100px;
+            background-color: #f3f4f6;
+            border-radius: 8px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 0 10px;
+        }
+        
+        /* 개별 통신 아이콘 스타일 */
+        .comm-icon-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding-top: 5px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s;
+        }
+
+        /* 전화 아이콘 (초록색) */
+        .icon-call {
+            background-color: #2ECC71;
+        }
+        /* 문자 아이콘 (연두색) */
+        .icon-sms {
+            background-color: #58D68D;
+        }
+        
+        /* 오픈카톡 아이콘 (노란색, 텍스트 색상 조정) */
+        .icon-kakaotalk {
+            background-color: #F7DC6F;
+            color: #3C2F00;
+        }
+        
+        /* 폰 아이콘 스타일 */
+        .comm-icon-box i {
+            font-size: 30px;
+            margin-bottom: 2px;
+        }
+        
+        /* 카톡 'TALK' 텍스트 스타일 */
+        .kakaotalk-text {
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1;
+        }
+        
+        /* 카톡 서브 텍스트 스타일 */
+        .kakaotalk-subtext {
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* 주소 섹션 스타일 */
+        .address-section {
+            margin-top: 30px;
+            padding-bottom: 10px;
+        }
+
+        /* 길게 늘어선 가로바 스타일 (요청 사항) */
+        .horizontal-bar {
+            width: 85%;
+            height: 1px;
+            background-color: #d1d5db;
+            margin: 0 auto 15px; /* 주소 섹션 바와 동일한 스타일 */
+        }
+        
+        /* 주소 텍스트 스타일 */
+        .address-text {
+            color: #374151;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        /* 찾아오는길 링크 스타일 */
+        .find-way-link {
+            display: inline-block;
+            color: #4f46e5;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.1s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-frame">
+    <div class="screen-content">
+        <!-- 상단 헤더 -->
+        <h1 class="title-boss-tattoo">보스타투</h1>
+
+        <div class="space-y-1">
+            <p class="blue-highlight">SINCE 1995 30년 전통</p>
+            <p class="blue-highlight">대구 BEST 1 타투샵</p>
+        </div>
+
+        <!-- 연락처 블록 -->
+        <div class="contact-block">
+            <!-- 전화번호 (검은색 굵은 글씨) -->
+            <p class="tel-text">TEL 010 7558 9800</p>
+            
+            <!-- Kakao ID/링크 -->
+            <p class="kakao-link">
+                <span style="color: black; font-weight: 500;">Kakao</span>
+                <span style="color: #0000FF; font-weight: 500;">bosstattoo</span>
+            </p>
+        </div>
+
+        <!-- Gallery / view 텍스트 및 배경 박스 -->
+        <div class="gallery-view-separator">
+            <span class="gallery-view-text" style="padding-right: 15px;">Gallery</span>
+            <span class="gallery-view-text" style="padding-left: 15px;">view</span>
+        </div>
+        
+        <!-- 소셜 아이콘 영역 -->
+        <div class="flex justify-center space-x-12 mt-6 mb-6"> <!-- mb-6 추가 -->
+            <!-- Instagram 아이콘 (바로가기) -->
+            <a href="https://instagram.com/boss_tattoo" target="_blank" class="icon-insta">
+                <i class="fab fa-instagram"></i>
+            </a>
+            
+            <!-- Blog 아이콘 (바로가기) -->
+            <a href="https://blog.naver.com/bosstattoo" target="_blank" class="icon-blog">
+                blog
+            </a>
+        </div>
+
+        <!-- 요청하신 가로바 추가 (아이콘과 communication 사이) -->
+        <div class="horizontal-bar" style="margin-top: 0; margin-bottom: 15px;"></div>
+
+        <!-- Communication 헤더 (margin-top을 줄여 간격 감소) -->
+        <div class="comm-header" style="margin-top: 0;">
+            communication
+        </div>
+        
+        <!-- 하단 통신 아이콘 영역 -->
+        <div class="comm-icons-container">
+            <!-- 전화 (Call) 아이콘 (바로가기) -->
+            <a href="tel:01075589800" class="comm-icon-box icon-call">
+                <i class="fa fa-phone"></i>
+                전화
+            </a>
+            
+            <!-- 문자 (SMS) 아이콘 (바로가기) -->
+            <a href="sms:01075589800" class="comm-icon-box icon-sms">
+                <i class="fa fa-comment-dots"></i>
+                문자
+            </a>
+            
+            <!-- 오픈카톡 (Open KakaoTalk) 아이콘 (바로가기) -->
+            <a href="https://open.kakao.com/o/siLprkah" target="_blank" class="comm-icon-box icon-kakaotalk">
+                <!-- 'TALK' 텍스트로 아이콘 대체 -->
+                <div class="kakaotalk-text">TALK</div>
+                <div class="kakaotalk-subtext">오픈카톡</div>
+            </a>
+        </div>
+
+        <!-- 주소 및 찾아오는 길 섹션 추가 -->
+        <div class="address-section">
+            <!-- 기존 주소 섹션 가로바 -->
+            <div class="horizontal-bar"></div>
+            
+            <!-- 주소 텍스트 -->
+            <p class="address-text">대구시 달서구 계대동문로23 2층</p>
+
+            <!-- '찾아 오는길' 링크 (구글 지도 검색으로 이동) -->
+            <a href="https://www.google.com/maps/search/대구시+달서구+계대동문로23+2층" target="_blank" class="find-way-link">
+                찾아 오는길
+            </a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
